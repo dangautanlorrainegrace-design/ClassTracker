@@ -17,7 +17,7 @@
     <body class="font-sans antialiased">
         <div class="flex min-h-screen bg-gray-100">
             <!-- Sidebar -->
-            <div class="w-64 bg-white shadow-sm border-r border-gray-200">
+            <aside class="w-64 bg-white shadow-sm border-r border-gray-200">
                 <!-- Logo -->
                 <div class="p-6 border-b border-gray-200">
                     <a href="{{ route('dashboard') }}">
@@ -62,13 +62,12 @@
                         </button>
                     </form>
                 </div>
-            </header>
+            </aside>
 
-                <!-- Page Content -->
-                    <main class="flex-1">
-                    @yield('content')  {{-- Change {{ $slot }} to this --}}
-                    </main>
-            </div>
+            <!-- Page Content -->
+            <main class="flex-1 p-6">
+                @yield('content')
+            </main>
         </div>
     </body>
 </html>

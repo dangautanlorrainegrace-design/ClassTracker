@@ -29,13 +29,13 @@
                                 <a href="{{ route('dashboard') }}" class="px-4 py-2 text-sm font-medium rounded-full transition {{ request()->routeIs('dashboard') ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-600 hover:text-gray-900 hover:bg-white' }}">
                                     Dashboard
                                 </a>
-                                <a href="#" class="px-4 py-2 text-sm font-medium rounded-full text-gray-600 transition hover:text-gray-900 hover:bg-white">
+                                <a href="{{ route('labs.schedule') }}" class="px-4 py-2 text-sm font-medium rounded-full transition {{ request()->routeIs('labs.schedule') ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-600 hover:text-gray-900 hover:bg-white' }}">
                                     Schedules
                                 </a>
-                                <a href="#" class="px-4 py-2 text-sm font-medium rounded-full text-gray-600 transition hover:text-gray-900 hover:bg-white">
+                                <a href="{{ route('labs.index') }}" class="px-4 py-2 text-sm font-medium rounded-full transition {{ request()->routeIs('labs.index') ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-600 hover:text-gray-900 hover:bg-white' }}">
                                     Manage Rooms
                                 </a>
-                                <a href="#" class="px-4 py-2 text-sm font-medium rounded-full text-gray-600 transition hover:text-gray-900 hover:bg-white">
+                                <a href="{{ route('labs.report') }}" class="px-4 py-2 text-sm font-medium rounded-full transition {{ request()->routeIs('labs.report') ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-600 hover:text-gray-900 hover:bg-white' }}">
                                     Reports
                                 </a>
                             </nav>

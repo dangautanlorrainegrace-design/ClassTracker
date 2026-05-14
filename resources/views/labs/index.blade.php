@@ -1,16 +1,15 @@
-@extends('layouts.app')
+<x-app-layout>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="p-6 bg-white rounded-lg shadow-md">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900">Laboratory Management</h2>
+                    <a href="{{ route('labs.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">
+                        Add New Lab
+                    </a>
+                </div>
 
-@section('content')
-<div class="p-6 bg-white rounded-lg shadow-md">
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-slate-900">Laboratory Management</h2>
-        <!-- Trigger Modal/Form for Add Lab -->
-        <a href="{{ route('labs.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">
-    Add New Lab
-</a>
-    </div>
-
-    <table class="w-full text-left border-collapse">
+                <table class="w-full text-left border-collapse">
         <thead class="bg-gray-50">
             <tr>
                 <th class="p-3 border-b">Lab Number</th>
@@ -37,5 +36,8 @@
             @endforeach
         </tbody>
     </table>
-</div>
-@endsection
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
