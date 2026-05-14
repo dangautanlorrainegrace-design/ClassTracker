@@ -9,3 +9,7 @@
         </div>
     </div>
 @endcomponent
+
+{{-- Debug: if you can see this text, the admin layout is being used --}}
+{{-- <div style="padding:8px 12px; background:#ffeeba;">ADMIN LAYOUT ACTIVE</div> --}} 
+
