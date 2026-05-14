@@ -18,51 +18,50 @@
         <div class="min-h-screen bg-gray-100">
             <!-- Header -->
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-                    <!-- Logo and Brand -->
-                    <div class="flex items-center gap-8">
-                        <a href="{{ route('dashboard') }}" class="flex items-center">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                        </a>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-16">
+                        <div class="flex items-center gap-6">
+                            <a href="{{ route('dashboard') }}" class="flex items-center">
+                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                            </a>
 
-                        <!-- Navigation Links -->
-                        <nav class="hidden md:flex items-center gap-6">
-                            <a href="{{ route('dashboard') }}" class="text-gray-700 hover:text-gray-900 {{ request()->routeIs('dashboard') ? 'font-semibold text-blue-600' : '' }}">
-                                Dashboard
-                            </a>
-                            <a href="#" class="text-gray-700 hover:text-gray-900">
-                                🏛️ Manage Rooms
-                            </a>
-                            <a href="#" class="text-gray-700 hover:text-gray-900">
-                                📅 Schedule
-                            </a>
-                            <a href="#" class="text-gray-700 hover:text-gray-900">
-                                📊 Reports
-                            </a>
-                        </nav>
-                    </div>
+                            <nav class="hidden md:flex items-center gap-2 rounded-full bg-gray-100 px-3 py-2">
+                                <a href="{{ route('dashboard') }}" class="px-4 py-2 text-sm font-medium rounded-full transition {{ request()->routeIs('dashboard') ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-600 hover:text-gray-900 hover:bg-white' }}">
+                                    Dashboard
+                                </a>
+                                <a href="#" class="px-4 py-2 text-sm font-medium rounded-full text-gray-600 transition hover:text-gray-900 hover:bg-white">
+                                    Schedules
+                                </a>
+                                <a href="#" class="px-4 py-2 text-sm font-medium rounded-full text-gray-600 transition hover:text-gray-900 hover:bg-white">
+                                    Manage Rooms
+                                </a>
+                                <a href="#" class="px-4 py-2 text-sm font-medium rounded-full text-gray-600 transition hover:text-gray-900 hover:bg-white">
+                                   Reports
+                                </a>
+                            </nav>
+                        </div>
 
-                    <!-- Account Dropdown -->
-                    <div class="flex items-center gap-4">
-                        <div x-data="{ open: false }" class="relative">
-                            <button @click="open = !open" class="flex items-center gap-2 px-3 py-2 rounded-md border border-transparent text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                                <span>{{ Auth::user()->name }}</span>
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                </svg>
-                            </button>
+                        <div class="flex items-center gap-4">
+                            <div x-data="{ open: false }" class="relative">
+                                <button @click="open = !open" class="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none">
+                                    <span>{{ Auth::user()->name }}</span>
+                                    <svg class="h-4 w-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                    </svg>
+                                </button>
 
-                            <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
-                                <div class="py-1">
-                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Profile
-                                    </a>
-                                    <form method="POST" action="{{ route('logout') }}" class="w-full">
-                                        @csrf
-                                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                            Log Out
-                                        </button>
-                                    </form>
+                                <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+                                    <div class="py-1">
+                                        <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            Profile
+                                        </a>
+                                        <form method="POST" action="{{ route('logout') }}" class="w-full">
+                                            @csrf
+                                            <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                                Log Out
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
