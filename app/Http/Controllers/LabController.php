@@ -34,4 +34,23 @@ class LabController extends Controller
 
     return view('labs.report', compact('totalLabs', 'availableLabs'));
 }
+public function create()
+{
+    return view('labs.create'); // Shows the form
+}
+
+public function store(Request $request)
+{
+    // Validates the input
+    $request->validate([
+        'lab_number' => 'required|unique:labs',
+        'lab_name' => 'required',
+        'status' => 'required'
+    ]);
+
+    // Saves to database
+    \App\Models\Lab::create($request->all());
+
+    return redirect()->route('labs.index')->with('success', 'Lab created successfully!');
+}
 }

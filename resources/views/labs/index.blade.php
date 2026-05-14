@@ -5,7 +5,9 @@
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-slate-900">Laboratory Management</h2>
         <!-- Trigger Modal/Form for Add Lab -->
-        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add New Lab</button>
+        <a href="{{ route('labs.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">
+    Add New Lab
+</a>
     </div>
 
     <table class="w-full text-left border-collapse">
