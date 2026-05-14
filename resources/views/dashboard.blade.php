@@ -1,10 +1,4 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
+@component('layouts.admin')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -14,4 +8,8 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endcomponent
+
+{{-- Debug: if you can see this text, the admin layout is being used --}}
+{{-- <div style="padding:8px 12px; background:#ffeeba;">ADMIN LAYOUT ACTIVE</div> --}} 
+
