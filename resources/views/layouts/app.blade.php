@@ -15,56 +15,60 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            <!-- Header -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-                    <!-- Logo and Brand -->
-                    <div class="flex items-center gap-8">
-                        <a href="{{ route('dashboard') }}" class="flex items-center">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                        </a>
+        <div class="flex min-h-screen bg-gray-100">
+            <!-- Sidebar -->
+            <div class="w-64 bg-white shadow-sm border-r border-gray-200">
+                <!-- Logo -->
+                <div class="p-6 border-b border-gray-200">
+                    <a href="{{ route('dashboard') }}">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    </a>
+                </div>
 
-                        <!-- Navigation Links -->
-                        <nav class="hidden md:flex items-center gap-6">
-                            <a href="{{ route('dashboard') }}" class="text-gray-700 hover:text-gray-900 {{ request()->routeIs('dashboard') ? 'font-semibold text-blue-600' : '' }}">
-                                Dashboard
-                            </a>
-                        </nav>
-                    </div>
+                <!-- Navigation Links -->
+                <nav class="mt-6">
+                    {{-- Dashboard Link --}}
+                    <a href="{{ route('dashboard') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : '' }}">
+                        Dashboard
+                    </a>
 
-                    <!-- Account Dropdown -->
-                    <div class="flex items-center gap-4">
-                        <div x-data="{ open: false }" class="relative">
-                            <button @click="open = !open" class="flex items-center gap-2 px-3 py-2 rounded-md border border-transparent text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                                <span>{{ Auth::user()->name }}</span>
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                </svg>
-                            </button>
+                    {{-- Labs Inventory (Raffy's Part) --}}
+                    <a href="{{ route('labs.index') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('labs.index') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : '' }}">
+                        Labs
+                    </a>
 
-                            <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
-                                <div class="py-1">
-                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Profile
-                                    </a>
-                                    <form method="POST" action="{{ route('logout') }}" class="w-full">
-                                        @csrf
-                                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                            Log Out
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
+                    {{-- Schedules (Gina's Part) --}}
+                    <a href="{{ route('labs.schedule') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('labs.schedule') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : '' }}">
+                        Schedules
+                    </a>
+
+                    {{-- Reports (Arlene's Part) --}}
+                    <a href="{{ route('labs.report') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('labs.report') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : '' }}">
+                        Reports
+                    </a>
+                </nav>
+
+                <!-- User Info -->
+                <div class="absolute bottom-0 w-64 p-6 border-t border-gray-200">
+                    <div class="flex items-center">
+                        <div class="text-sm font-medium text-gray-800">
+                            {{ Auth::user()->name }}
                         </div>
                     </div>
+                    <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                        @csrf
+                        <button type="submit" class="text-sm text-red-600 hover:text-red-800 font-semibold">
+                            Log Out
+                        </button>
+                    </form>
                 </div>
             </header>
 
-            <!-- Page Content -->
-            <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                {{ $slot }}
-            </main>
+                <!-- Page Content -->
+                    <main class="flex-1">
+                    @yield('content')  {{-- Change {{ $slot }} to this --}}
+                    </main>
+            </div>
         </div>
     </body>
 </html>
