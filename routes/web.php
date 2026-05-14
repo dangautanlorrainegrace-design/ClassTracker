@@ -2,13 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Lab;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $labs = Lab::all(); // Fetch the labs for Arlene's grid
+    return view('dashboard', compact('labs'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -29,6 +31,12 @@ Route::middleware('auth')->group(function () {
     
     // 4. Lab Creation Logic
     Route::post('/labs/store', [App\Http\Controllers\LabController::class, 'store'])->name('labs.store');
+
+    Route::get('/labs/create', [LabController::class, 'create'])->name('labs.create');
+Route::post('/labs', [LabController::class, 'store'])->name('labs.store');
+
+// The POST route handles the status change
+Route::post('/labs/{id}/toggle', [CheckInController::class, 'toggleStatus'])->name('lab.toggle');
 });;
 
 require __DIR__.'/auth.php';
