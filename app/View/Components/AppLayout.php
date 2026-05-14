@@ -16,7 +16,7 @@ class AppLayout extends Component
         $layout = 'layouts.app';
         
         if (Auth::check()) {
-            $layout = Auth::user()->role === 'faculty' ? 'layouts.admin' : 'layouts.user';
+            $layout = Auth::user()->role === 'faculty' ? 'layouts.admin.layout' : 'layouts.user.layout';
         }
         
         return view($layout);

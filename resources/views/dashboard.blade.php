@@ -1,4 +1,4 @@
-@component('layouts.admin')
+<x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-@endcomponent
+</x-app-layout>
 
 {{-- Debug: if you can see this text, the admin layout is being used --}}
 {{-- <div style="padding:8px 12px; background:#ffeeba;">ADMIN LAYOUT ACTIVE</div> --}} 

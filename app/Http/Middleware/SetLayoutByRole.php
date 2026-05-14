@@ -17,7 +17,7 @@ class SetLayoutByRole
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->user()) {
-            $layout = $request->user()->role === 'faculty' ? 'layouts.admin' : 'layouts.user';
+            $layout = $request->user()->role === 'faculty' ? 'layouts.admin.layout' : 'layouts.user.layout';
             View::share('layout', $layout);
         }
 
