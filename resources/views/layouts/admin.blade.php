@@ -36,7 +36,7 @@
                                     Manage Rooms
                                 </a>
                                 <a href="#" class="px-4 py-2 text-sm font-medium rounded-full text-gray-600 transition hover:text-gray-900 hover:bg-white">
-                                   Reports
+                                    Reports
                                 </a>
                             </nav>
                         </div>
