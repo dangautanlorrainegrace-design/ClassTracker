@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config(ClassTracker) }}</title>
+        <title>{{ config('app.name', 'ClassTracker') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,7 +17,7 @@
     <body class="font-sans antialiased">
         <div class="flex min-h-screen bg-gray-100">
             <!-- Sidebar -->
-            <div class="w-64 bg-white shadow-sm">
+            <div class="w-64 bg-white shadow-sm border-r border-gray-200">
                 <!-- Logo -->
                 <div class="p-6 border-b border-gray-200">
                     <a href="{{ route('dashboard') }}">
@@ -27,16 +27,23 @@
 
                 <!-- Navigation Links -->
                 <nav class="mt-6">
-                    <a href="{{ route('dashboard') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('dashboard') ? 'bg-gray-200 border-r-4 border-blue-500' : '' }}">
+                    {{-- Dashboard Link --}}
+                    <a href="{{ route('dashboard') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : '' }}">
                         Dashboard
                     </a>
-                    <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
+
+                    {{-- Labs Inventory (Raffy's Part) --}}
+                    <a href="{{ route('labs.index') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('labs.index') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : '' }}">
                         Labs
                     </a>
-                    <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
+
+                    {{-- Schedules (Gina's Part) --}}
+                    <a href="{{ route('labs.schedule') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('labs.schedule') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : '' }}">
                         Schedules
                     </a>
-                    <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
+
+                    {{-- Reports (Arlene's Part) --}}
+                    <a href="{{ route('labs.report') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('labs.report') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : '' }}">
                         Reports
                     </a>
                 </nav>
@@ -44,13 +51,13 @@
                 <!-- User Info -->
                 <div class="absolute bottom-0 w-64 p-6 border-t border-gray-200">
                     <div class="flex items-center">
-                        <div class="text-sm text-gray-600">
+                        <div class="text-sm font-medium text-gray-800">
                             {{ Auth::user()->name }}
                         </div>
                     </div>
                     <form method="POST" action="{{ route('logout') }}" class="mt-2">
                         @csrf
-                        <button type="submit" class="text-sm text-gray-600 hover:text-gray-800">
+                        <button type="submit" class="text-sm text-red-600 hover:text-red-800 font-semibold">
                             Log Out
                         </button>
                     </form>
@@ -69,9 +76,9 @@
                 @endisset
 
                 <!-- Page Content -->
-                <main class="flex-1">
-                    {{ $slot }}
-                </main>
+                    <main class="flex-1">
+                    @yield('content')  {{-- Change {{ $slot }} to this --}}
+                    </main>
             </div>
         </div>
     </body>
