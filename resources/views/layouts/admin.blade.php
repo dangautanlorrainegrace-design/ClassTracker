@@ -16,7 +16,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="flex min-h-screen bg-gray-100">
-            <!-- Sidebar -->
+            <!-- Admin Sidebar -->
             <div class="w-64 bg-white shadow-sm">
                 <!-- Logo -->
                 <div class="p-6 border-b border-gray-200">
@@ -25,19 +25,25 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- Admin Navigation Links -->
                 <nav class="mt-6">
+                    <div class="px-6 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                        Admin
+                    </div>
                     <a href="{{ route('dashboard') }}" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('dashboard') ? 'bg-gray-200 border-r-4 border-blue-500' : '' }}">
                         Dashboard
                     </a>
                     <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
-                        Labs
+                        📋 Labs Management
                     </a>
                     <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
-                        Schedules
+                        📅 Schedules
                     </a>
                     <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
-                        Reports
+                        📊 Reports
+                    </a>
+                    <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
+                        👥 Manage Students
                     </a>
                 </nav>
 
@@ -46,6 +52,7 @@
                     <div class="flex items-center">
                         <div class="text-sm text-gray-600">
                             {{ Auth::user()->name }}
+                            <span class="block text-xs text-blue-600 font-semibold">Admin</span>
                         </div>
                     </div>
                     <form method="POST" action="{{ route('logout') }}" class="mt-2">
