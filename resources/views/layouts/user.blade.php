@@ -34,13 +34,10 @@
                         Dashboard
                     </a>
                     <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
-                        🔬 My Labs
+                        🏛️ Available Rooms
                     </a>
                     <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
                         📅 My Schedule
-                    </a>
-                    <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
-                        📈 My Grades
                     </a>
                 </nav>
 

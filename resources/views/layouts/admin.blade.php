@@ -34,16 +34,13 @@
                         Dashboard
                     </a>
                     <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
-                        📋 Labs Management
+                        🏛️ Manage Rooms
                     </a>
                     <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
-                        📅 Schedules
+                        📅 Schedule
                     </a>
                     <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
                         📊 Reports
-                    </a>
-                    <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">
-                        👥 Manage Students
                     </a>
                 </nav>
 
