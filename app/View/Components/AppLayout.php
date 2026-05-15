@@ -13,12 +13,14 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        $layout = 'layouts.app';
-        
+        // Only two interfaces are allowed in the app:
+        // - Admin: resources/views/layouts/admin/layout.blade.php
+        // - User : resources/views/layouts/user/layout.blade.php
+        // NOTE: role === 'faculty' is treated as admin in this project.
         if (Auth::check()) {
-            $layout = Auth::user()->role === 'faculty' ? 'layouts.admin.layout' : 'layouts.user.layout';
+            return view(Auth::user()->role === 'faculty' ? 'layouts.admin.layout' : 'layouts.user.layout');
         }
-        
-        return view($layout);
+
+        return view('layouts.user.layout');
     }
 }
