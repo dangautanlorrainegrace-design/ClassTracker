@@ -13,8 +13,20 @@ Route::get('/dashboard', function () {
     return view('dashboard', compact('labs'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/admin/login', [\App\Http\Controllers\AdminAuthController::class, 'showLogin'])
+    ->middleware('guest')
+    ->name('admin.login');
+
+Route::post('/admin/login', [\App\Http\Controllers\AdminAuthController::class, 'login'])
+    ->middleware('guest')
+    ->name('admin.login');
+
 Route::middleware('auth')->group(function () {
+    Route::post('/admin/logout', [\App\Http\Controllers\AdminAuthController::class, 'logout'])
+        ->name('admin.logout');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
