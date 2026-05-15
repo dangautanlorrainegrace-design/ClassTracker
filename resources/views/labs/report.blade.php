@@ -23,7 +23,13 @@
                     </div>
                     <div class="bg-purple-50 p-5 rounded-xl border border-purple-100">
                         <span class="text-purple-600 text-sm font-bold uppercase">Usage Rate</span>
-                        <h3 class="text-3xl font-bold text-slate-900">82%</h3>
+                        @php
+                            $total = $totalLabs ?? 0;
+                            $available = $availableLabs ?? 0;
+                            $used = max($total - $available, 0);
+                            $usageRate = $total > 0 ? intval(round(($used / $total) * 100)) : 0;
+                        @endphp
+                        <h3 class="text-3xl font-bold text-slate-900">{{ $usageRate }}%</h3>
                     </div>
                 </div>
 
